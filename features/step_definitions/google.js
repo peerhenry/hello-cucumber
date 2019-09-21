@@ -1,22 +1,9 @@
 import assert from 'assert'
-import puppeteer from 'puppeteer'
-import { When, Then, Before, After } from 'cucumber'
-
-Before(async function() {
-  const browser = await puppeteer.launch({
-    headless: true
-  })
-  this.browser = browser
-  const page = await browser.newPage()
-  this.page = page
-})
-
-After(function() {
-  this.browser.close()
-})
+// import puppeteer from 'puppeteer'
+import { When, Then } from 'cucumber'
 
 When('I visit Google', async function() {
-  await this.page.goto('https://www.google.com')
+  await this.gotoGoogle() // call function in world.js
 })
 
 Then('I should get a response', async function() {
